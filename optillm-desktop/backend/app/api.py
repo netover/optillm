@@ -24,8 +24,8 @@ async def set_new_config(
     # Update the config file on disk
     updated_config = config_manager.update_config(partial_update)
 
-    # Broadcast the specific change that was made to all clients
-    await broadcast_config_update(partial_update)
+    # Broadcast the entire updated configuration to all clients for state synchronization
+    await broadcast_config_update(updated_config)
 
     # Return the full, updated configuration
     return updated_config

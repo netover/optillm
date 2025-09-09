@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const colors = {
   background: '#e0e5ec',
@@ -8,7 +8,8 @@ const colors = {
   accent: '#2979ff',
 };
 
-const commonStyles = `
+// Common styles defined using the `css` helper for reusability
+const commonStyles = css`
   border-radius: 20px;
   background: ${colors.background};
   transition: box-shadow 0.3s ease-in-out;
@@ -79,3 +80,61 @@ export const NeuromorphicSwitch = ({ checked, ...props }) => {
     </SwitchContainer>
   );
 };
+
+export const NeuromorphicInput = styled.input`
+  ${commonStyles}
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: ${colors.textColor};
+  width: 150px;
+  box-shadow: inset 4px 4px 8px ${colors.darkShadow}, inset -4px -4px 8px ${colors.lightShadow};
+
+  &::placeholder {
+    color: #999;
+  }
+`;
+
+export const SliderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`;
+
+export const StyledSlider = styled.input.attrs({ type: 'range' })`
+  -webkit-appearance: none;
+  appearance: none;
+  width: 120px;
+  height: 10px;
+  background: ${colors.background};
+  outline: none;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 4px ${colors.darkShadow}, inset -2px -2px 4px ${colors.lightShadow};
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: ${colors.background};
+    cursor: pointer;
+    box-shadow: 3px 3px 6px ${colors.darkShadow}, -3px -3px 6px ${colors.lightShadow};
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: ${colors.background};
+    cursor: pointer;
+    box-shadow: 3px 3px 6px ${colors.darkShadow}, -3px -3px 6px ${colors.lightShadow};
+  }
+`;
+
+export const SliderValue = styled.span`
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+`;
